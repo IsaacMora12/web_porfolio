@@ -3,12 +3,88 @@
     width: 100%;
     height: 100%;
 }
-.shadow-green{
-    border: 1px dashed #39ff14;
+
+#draggable {
+  position: absolute;
+  width: 30rem;
+  height: 20rem;
 }
 
+/* Medium screens (md) */
+@media (min-width: 768px) {
+  #draggable {
+      width: 30rem;
+      height: 20rem;
+  }
+}
+
+/* Large screens (lg) */
+@media (min-width: 1024px) {
+  #draggable {
+    width: 40rem;
+    height: 20rem;
+}
+  }
+.window {
+
+  border: 1px solid #37ff14b7;
+  background-color: #000;
+  color: #37ff14;
+  overflow: hidden;
+  resize: both;
+}
+.window-header {
+  
+  cursor: move;
+  flex: 0 0 auto;
+}
+.window-content {
+  padding: 10px;
+  height: calc(100% - 40px);
+  flex: 1 1 auto;
+  overflow-y: scroll;
+}
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  cursor: se-resize;
+  background-color: #37ff14;
+}
 .text-green-old{
     color: #37ff14b0;
+}
+
+.window-content::-webkit-scrollbar {
+  width: 12px;
+  background-color: #000000;
+}
+
+
+.window-content::-webkit-scrollbar-thumb {
+  background-color: #37ff14;
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background-color: #000000;
+  border: 1px dashed #37ff14;
+  border-radius: 10px;
+}
+
+
+.window-content::-webkit-scrollbar-button {
+  background-color: #000000;
+  border: 1px solid #37ff14;
+  border-radius: 5px;
+}
+
+.window-content {
+  scrollbar-width: thin;
+  scrollbar-color: #37ff14 #000000;
 }
 @keyframes typing {
     from { width: 0 }
@@ -18,7 +94,9 @@
 @keyframes blink {
     50% { border-color: transparent }
 }
-
+.nav_container {
+  position: sticky;
+}
 .typing-effect {
     overflow: hidden;
     border-right: .15em solid #39ff14;
