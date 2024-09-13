@@ -1,5 +1,5 @@
 
-const sections = ['name', 'title', 'subtitle', 'technologies', 'logoContainer', 'logoPython', 'logoHTML', 'logoCSS', 'logoJavaScript', 'logoReact', 'aboutTitle', 'aboutText', 'projectsTitle', 'projects1', 'projects2',  'experienceTitle1', 'experienceText1', 'experienceText2', "experienceText3", 'expreienceLi1','expreienceLi2','expreienceLi3','expreienceLi4','expreienceLi5','expreienceLi6', 'contactTitle', 'contactEmail', 'contactPhone', 'contactLinkedin', 'contactGithub',  ];
+const sections = ['name', 'title', 'subtitle', 'technologies', 'logoContainer', 'logoPython', 'logoHTML', 'logoCSS', 'logoJavaScript', 'logoReact', 'aboutTitle', 'aboutText', 'experienceTitle1', 'experienceText1', 'experienceText2', "experienceText3", 'expreienceLi1','expreienceLi2','expreienceLi3','expreienceLi4','expreienceLi5','expreienceLi6', 'contactTitle', 'contactEmail', 'contactPhone', 'contactLinkedin', 'contactGithub',  ];
 let currentIndex = 0;
 let typingEnabled = true;
 let glitchEnabled = true;
