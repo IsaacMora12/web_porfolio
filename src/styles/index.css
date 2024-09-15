@@ -3,28 +3,6 @@
     width: 100%;
     height: 100%;
 }
-
-#draggable {
-  position: absolute;
-  width: 18rem;
-  height: 20rem;
-}
-
-/* Medium screens (md) */
-@media (min-width: 768px) {
-  #draggable {
-      width: 30rem;
-      height: 15rem;
-  }
-}
-
-/* Large screens (lg) */
-@media (min-width: 1024px) {
-  #draggable {
-    width: 40rem;
-    height: 20rem;
-}
-  }
 .window {
 
   border: 1px solid #37ff14b7;
@@ -107,7 +85,47 @@
         typing 3.5s steps(40, end),
         blink .75s step-end 10s;
 }
+#errorWindow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+  background-color: #000;
+  border: 1px solid #37ff14b7;
+  color: #37ff14;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
 
+#errorMessage {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#restartMessage {
+  display: none;
+  margin-bottom: 10px;
+}
+
+#progressBarContainer {
+  width: 100%;
+  height: 20px;
+  background-color: #222;
+  border: 1px solid #37ff14b7;
+}
+
+#progressBar {
+  width: 0;
+  height: 100%;
+  background-color: #37ff14;
+  transition: width 0.2s ease-in-out;
+}
 .tech-icon {
     fill: #39ff14;
 }

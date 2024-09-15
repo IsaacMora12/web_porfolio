@@ -9,15 +9,27 @@
     <link href="./styles/output.css" rel="stylesheet" type='text/css' media='screen'>
  
 </head>
-<body class="bg-black p-4  font-mono overflow-hidden">
+<body class="bg-black font-mono overflow-hidden">
     
-    <div  id="draggable" class="window rounded-lg border border-dashed border-[#37ff14b7] ">
-
+    <div  id="draggable" class="window w-full absolute rounded-lg h-full border border-dashed border-[#37ff14b7] ">
+        <div id="errorWindow">
+            <div id="errorMessage"></div>
+            <div id="restartMessage">Reiniciando...</div>
+            <div id="progressBarContainer">
+                <div id="progressBar"></div>
+            </div>
+        </div>
         <nav  class="window-header ">
-            <div class="border text-[#37ff14b7]  border-dashed border-[#37ff14b7] rounded-md bg-black ">
-                <div class="flex justify-start space-x-2">
+            <div class="border text-[#37ff14b7]  border-dashed border-[#37ff14b7] rounded-md bg-black flex ">
+                <div class="flex justify-start flex-auto ">
                     <button id="toggleTyping" class="px-4 py-2 hover:bg-[#37ff147b] hover:text-black rounded">Fast mode</button>
                     <button id="toggleGlitch" class="px-4 hover:bg-[#37ff147b] hover:text-black rounded">Conec++ V.2.0</button>
+                </div>
+                <div class="flex justify-end flex-auto ">
+                    <button id="" class="px-4 py-2 hover:bg-[#37ff147b] hover:text-black rounded"><svg width="26px" height="26px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 11H18V13H6V11Z" fill="#37ff147b"></path> </g></svg></button>
+
+                    <button id="maximizeBtn" class="px-4 hover:bg-[#37ff147b] hover:text-black rounded text-[#37ff147b]"><svg fill="#37ff147b" width="26px" height="26px" viewBox="0 0 36 36" version="1.1" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>window-restore-line</title> <path d="M28,8H14a2,2,0,0,0-2,2v2h2V10H28V20H26v2h2a2,2,0,0,0,2-2V10A2,2,0,0,0,28,8Z" class="clr-i-outline clr-i-outline-path-1"></path><path d="M22,14H8a2,2,0,0,0-2,2V26a2,2,0,0,0,2,2H22a2,2,0,0,0,2-2V16A2,2,0,0,0,22,14ZM8,26V16H22V26Z" class="clr-i-outline clr-i-outline-path-2"></path> <rect x="0" y="0" width="16" height="16" fill-opacity="0"></rect> </g></svg></button>
+                    <button id="closeBtn" class="px-4 hover:bg-[#37ff147b] hover:text-black rounded"><svg width="26px" height="26px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#37ff147b"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Close_SM"> <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#37ff147b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></button>
                 </div>
             </div>
         </nav>
