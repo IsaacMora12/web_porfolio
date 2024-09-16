@@ -72,10 +72,8 @@ function showErrorWindow() {
     const progressBar = document.getElementById('progressBar');
     errorWindow.style.display = 'flex';
     
-    // Mostrar mensaje de error
     setTimeout(() => {
         document.getElementById('errorMessage').textContent = 'Error en el sistema';
-        // Iniciar barra de progreso
         setTimeout(() => {
             document.getElementById('restartMessage').style.display = 'block';
             let progress = 0;
@@ -84,7 +82,6 @@ function showErrorWindow() {
                 progressBar.style.width = `${progress}%`;
                 if (progress >= 100) {
                     clearInterval(interval);
-                    // Ocultar ventana de error y mostrar contenedor principal
                     setTimeout(() => {
                         window.location.reload()
                     }, 500);
@@ -96,11 +93,9 @@ function showErrorWindow() {
 
 
 closeBtn.addEventListener('click', closeWindow);
-// Agregar evento al botón de minimizar
 
-// Iniciar función de arrastre
 dragElement(draggableWindow);
 
-// Agregar evento al botón de maximizar
+
 maximizeBtn.addEventListener('click', toggleSize);
 closeBtn.addEventListener('click', closeWindow);
