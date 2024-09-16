@@ -3,6 +3,16 @@
     width: 100%;
     height: 100%;
 }
+/* Estilos predeterminados para botones */
+.button-active {
+  background-color: #37ff147b;
+  color: black;
+}
+
+.button-hover-inverted:hover {
+  background-color: #37ff147b;
+  color: black;
+}
 .window {
 
   border: 1px solid #37ff14b7;
@@ -12,14 +22,11 @@
   resize: both;
 }
 .window-header {
-  
   cursor: move;
-  flex: 0 0 auto;
 }
 .window-content {
   padding: 10px;
   height: calc(100% - 40px);
-  flex: 1 1 auto;
   overflow-y: scroll;
 }
 .resize-handle {
@@ -30,9 +37,6 @@
   height: 10px;
   cursor: se-resize;
   background-color: #37ff14;
-}
-.text-green-old{
-    color: #37ff14b0;
 }
 
 .window-content::-webkit-scrollbar {
@@ -75,16 +79,7 @@
 .nav_container {
   position: sticky;
 }
-.typing-effect {
-    overflow: hidden;
-    border-right: .15em solid #39ff14;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: 
-        typing 3.5s steps(40, end),
-        blink .75s step-end 10s;
-}
+
 #errorWindow {
   position: fixed;
   top: 50%;

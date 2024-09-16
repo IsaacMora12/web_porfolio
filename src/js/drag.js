@@ -1,3 +1,5 @@
+import {resetAndRestartTyping} from "./typingAndGlitch.js";
+
 const draggableWindow = document.getElementById('draggable');
 const header = draggableWindow.querySelector('.window-header');
 const maximizeBtn = document.getElementById('maximizeBtn');
@@ -84,8 +86,7 @@ function showErrorWindow() {
                     clearInterval(interval);
                     // Ocultar ventana de error y mostrar contenedor principal
                     setTimeout(() => {
-                        errorWindow.style.display = 'none';
-                        draggableWindow.style.display = 'block';
+                        window.location.reload()
                     }, 500);
                 }
             }, 200);

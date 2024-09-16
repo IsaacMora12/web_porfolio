@@ -1,5 +1,5 @@
 
-const sections = ['name', 'title', 'subtitle', 'technologies', 'logoContainer', 'logoPython', 'logoHTML', 'logoCSS', 'logoJavaScript', 'logoReact', 'aboutTitle', 'aboutText', 'experienceTitle1', 'experienceText1', 'experienceText2', "experienceText3", 'expreienceLi1','expreienceLi2','expreienceLi3','expreienceLi4','expreienceLi5','expreienceLi6', 'contactTitle', 'contactEmail', 'contactPhone', 'contactLinkedin', 'contactGithub',  ];
+const sections = ['name', 'title', 'subtitle', 'technologies', 'logoContainer', 'logoPython', 'logoHTML', 'logoCSS', 'logoJavaScript', 'logoReact', 'aboutTitle', 'aboutText', 'experienceTitle1', 'experienceText1', 'experienceText2', "experienceText3", 'expreienceLi1','expreienceLi2','expreienceLi3','expreienceLi4','expreienceLi5'  ];
 let currentIndex = 0;
 let typingEnabled = true;
 let glitchEnabled = true;
@@ -17,66 +17,113 @@ function typeWriter(element, text, i, fn) {
       }
     }
   }
-function startTyping() {
-    if (currentIndex < sections.length) {
-      const currentElement = document.getElementById(sections[currentIndex]);
-      currentElement.classList.remove('hidden');
+function showAllText() {
+  sections.forEach(sectionId => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.style.visibility = 'visible';
+      element.classList.remove('hidden');
+      if (isNonTextElement(currentElement)) {
   
-      // Skip typing for non-text elements like DIVs or SVGs
-      if (['DIV', 'SECTION'].includes(currentElement.tagName)) {
-        currentElement.style.visibility = 'visible';
+        showElementImmediately(currentElement);
         currentIndex++;
         startTyping();
       } else {
-        const text = currentElement.innerText;
-        currentElement.innerHTML = '';
-        if (typingEnabled) {
-          typeWriter(currentElement, text, 0, () => {
-            currentElement.classList.remove('typing-effect');
-            currentIndex++;
-            startTyping();
-          });
-        } else {
-          currentElement.innerHTML = text;
-          currentIndex++;
-          startTyping();
-        }
+     
+        handleTextTyping(currentElement);
       }
+      
     }
+  });
+}
+
+
+function startTyping() {
+  
+  if (currentIndex >= sections.length) return;
+  const currentElement = document.getElementById(sections[currentIndex]);
+  if (!currentElement) { 
+    currentIndex++;
+    return startTyping(); 
   }
 
+  currentElement.classList.remove('hidden'); 
+
+  if (isNonTextElement(currentElement)) {
+  
+    showElementImmediately(currentElement);
+    currentIndex++;
+    startTyping();
+  } else {
+ 
+    handleTextTyping(currentElement);
+  }
+}
+
+
+function isNonTextElement(element) {
+  return ['DIV', 'SECTION'].includes(element.tagName);
+}
+
+
+function showElementImmediately(element) {
+  element.style.visibility = 'visible';
+}
+
+
+function handleTextTyping(element) {
+  const text = element.innerText;
+  element.innerHTML = ''; 
+
+  if (typingEnabled) {
+    typeWriter(element, text, 0, () => {
+      currentIndex++;
+      startTyping();
+    });
+  } else {
+    element.innerHTML = text;
+    currentIndex++;
+    startTyping();
+  }
+}
+
+
 function activateGlitch() {
-    
-        const glitchElements = document.querySelectorAll('.glitch');
-        glitchElements.forEach(element => {
-            element.classList.add('active-glitch');
-        });
-    
+  const glitchElements = document.querySelectorAll('.glitch');
+  glitchElements.forEach(element => {
+    element.classList.add('active-glitch');
+  });
+}
+
+
+function resetAndRestartTyping() {
+console.log("resetAndRestartTyping");
+  sections.forEach(sectionId => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      
+      element.classList.add('hidden'); 
+                  
+       
+  
+    }
+  });
+  currentIndex = 0; 
+  startTyping(); 
 }
 
 function toggleTyping() {
-    typingEnabled = !typingEnabled;
-    if (!typingEnabled) {
-        sections.forEach(sectionId => {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.classList.remove('hidden');
-                element.classList.remove('typing-effect');
-                 element.style.visibility = 'visible';
-                element.innerHTML = element.innerText;
-            }
-        });
-    } else {
-        currentIndex = 0;
-        sections.forEach(sectionId => {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.classList.add('hidden');
-            }
-        });
-        startTyping();
-    }
+  typingEnabled = !typingEnabled;
+
+  if (!typingEnabled) {
+    showAllText(); 
+   
+  } else { 
+    resetAndRestartTyping(); 
+  }
+
 }
+
 
 function toggleGlitch() {
     glitchEnabled = !glitchEnabled;
@@ -86,7 +133,7 @@ function toggleGlitch() {
             element.classList.remove('glitchend');
             element.classList.add('glitch');
             if (!typingEnabled || !element.classList.contains('hidden')) {
-                element.classList.add('active-glitch');
+                element.classList.add('glitch');
             }
         } else {
             element.classList.remove('glitch' );
@@ -99,16 +146,8 @@ window.onload = function() {
     startTyping();
     setInterval(activateGlitch, 10000);
     
-    document.getElementById('toggleTyping').addEventListener('click', function() {
-        typingEnabled = !typingEnabled;
-    
-        if (typingEnabled) {
-            // Reiniciar el proceso de escritura cuando typingEnabled sea true
-            currentIndex = 0; // Reiniciar el índice
-            startTyping();
-        }
-    });
+    document.getElementById('toggleTyping').addEventListener('click', toggleTyping );
     document.getElementById('toggleGlitch').addEventListener('click', toggleGlitch);
-};
+  }; 
 
-
+  export { resetAndRestartTyping };
